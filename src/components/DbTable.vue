@@ -1,8 +1,8 @@
 <template>
     <div class="db-table">
-        <h4>{{table.name}}</h4>
+        <h3>{{table.name}}</h3>
         <p v-if="table.note">{{table.note}}</p>
-        <table class="table table-striped table-bordered">
+        <table class="table table-dense table-bordered">
             <thead>
             <tr>
                 <th style="width: 15%">Field</th>
@@ -17,24 +17,23 @@
         </table>
 
         <div class="db-table-index" v-if="table.indexes.length > 0">
-            <h5>Index</h5>
-            <table class="table table-striped table-bordered">
+            <h4>Index</h4>
+            <table class="table table-dense table-bordered">
                 <thead>
                 <tr>
-                    <th style="width: 20%">Name</th>
-                    <th style="width: 20%">Column(s)</th>
-                    <th>Notes</th>
+                    <th style="width: 20%; text-align: left">Name</th>
+                    <th style="width: 20%; text-align: left">Column(s)</th>
+                    <th style="text-align: left">Notes</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr v-for="index in table.indexes">
-                    <th>{{index.name || `${table.name}_${columnsConcat(index.columns, '_')}`}}</th>
+                    <th style="text-align: left">{{index.name || `${table.name}_${columnsConcat(index.columns, '_')}`}}</th>
                     <td>{{columnsConcat(index.columns, ', ')}}</td>
                     <td>
-                        <span class="badge badge-primary mr-1" v-if="index.pk === true">pk</span>
-                        <span class="badge badge-warning mr-1" v-if="index.unique === true">unique</span>
-
-                        {{index.note}}
+                        <span class="badge badge-primary mr-1" v-if="index.pk === true">[pk]</span>
+                        <span class="badge badge-warning mr-1" v-if="index.unique === true">[unique]</span>
+                        <div v-if="index.note">{{index.note}}</div>
                     </td>
                 </tr>
                 </tbody>

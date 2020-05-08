@@ -4,14 +4,14 @@
         <td>{{field.type.type_name}}</td>
         <td>{{field.not_null === false ? 'Yes' : ''}}</td>
         <td>
-            <span class="badge badge-primary mr-1" v-if="field.pk === true">pk</span>
-            <span class="badge badge-secondary mr-1" v-if="field.increment === true">increment</span>
-            <span class="badge badge-warning mr-1" v-if="field.unique === true">unique</span>
+            <span class="badge badge-primary mr-1" v-if="field.pk === true">[pk] </span>
+            <span class="badge badge-secondary mr-1" v-if="field.increment === true">[increment] </span>
+            <span class="badge badge-warning mr-1" v-if="field.unique === true">[unique] </span>
 
             <template v-for="endpoint in field.endpoints"
                       v-if="endpoint.relation === '*' && endpoint.ref != null && endpoint.ref.endpoints.length > 0">
                 <span class="badge badge-info mr-1">
-                    fk -&gt; {{endpoint.ref.endpoints[0].tableName}}.{{endpoint.ref.endpoints[0].fieldName}}
+                    [fk -&gt; {{endpoint.ref.endpoints[0].tableName}}.{{endpoint.ref.endpoints[0].fieldName}}]
                 </span>
             </template>
 

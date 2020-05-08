@@ -6,8 +6,15 @@
 @import "~bootstrap/scss/utilities";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/alert";
-@import "~bootstrap/scss/badge";
+//@import "~bootstrap/scss/badge";
 @import "~bootstrap/scss/card";
+
+.table.table-dense th, .table.table-dense td {
+    padding: 6px 8px;
+}
+.table thead th, .table thead td {
+    background: #F3F3F3;
+}
 
 @media print {
     .area--code-input {
