@@ -8,3 +8,9 @@
 @import "~bootstrap/scss/alert";
 @import "~bootstrap/scss/badge";
 @import "~bootstrap/scss/card";
+
+@media print {
+    .area--code-input {
+        display: none;
+    }
+}

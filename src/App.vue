@@ -2,13 +2,13 @@
   <div id="app">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 area--code-input">
           <code-input v-model="code" />
           <div class="text-right">
             <button type="button" class="btn btn-success" @click="convert">Convert &raquo;</button>
           </div>
         </div>
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 area--result">
           <db-tables v-model="dbml" />
         </div>
       </div>
