@@ -1,29 +1,45 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <code-input v-model="code" />
+          <div class="text-right">
+            <button type="button" class="btn btn-success" @click="convert">Convert &raquo;</button>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <db-tables v-model="dbml" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import CodeInput from "@/components/CodeInput.vue";
+import DbTables from "@/components/DbTables.vue";
 
 @Component({
   components: {
-    HelloWorld,
+    DbTables,
+    CodeInput,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  code: string = "";
+  dbml: string = "";
+
+  convert() {
+    this.dbml = this.code;
+  }
+}
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "./assets/bootstrap";
+#dbml_code {
+  height: 80vh;
 }
 </style>
